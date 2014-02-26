@@ -1,19 +1,19 @@
 srcdir=.
 
-CFLAGS=-g -O2 
+CFLAGS=-g 
 LDFLAGS=
 CPPFLAGS=
 DEFS=-DHAVE_CONFIG_H
-COMPILE_FLAGS=${CFLAGS} ${CPPFLAGS} ${DEFS} -Wall -Wextra -Werror -Wno-deprecated -fno-strict-aliasing -fno-omit-frame-pointer -ggdb
+COMPILE_FLAGS=${CFLAGS} ${CPPFLAGS} ${DEFS} -Wall -Wextra -Werror -Wno-deprecated -fno-strict-aliasing -fno-omit-frame-pointer -g
 
-EXTRA_LIBS=-lconfig -lcrypto -lz -lrt -lm   -lreadline -llua 
+EXTRA_LIBS=-lconfig -ledit -lcrypto -lz -lm   -ledit -llua -lpython
 LOCAL_LDFLAGS=-rdynamic -ggdb ${EXTRA_LIBS}
 LINK_FLAGS=${LDFLAGS} ${LOCAL_LDFLAGS}
 
 HEADERS= ${srcdir}/constants.h  ${srcdir}/include.h  ${srcdir}/interface.h  ${srcdir}/LICENSE.h  ${srcdir}/loop.h  ${srcdir}/mtproto-client.h  ${srcdir}/mtproto-common.h  ${srcdir}/net.h  ${srcdir}/no-preview.h  ${srcdir}/queries.h  ${srcdir}/structures.h  ${srcdir}/telegram.h  ${srcdir}/tree.h ${srcdir}/config.h ${srcdir}/binlog.h ${srcdir}/tools.h ${srcdir}/lua-tg.h
 INCLUDE=-I. -I${srcdir}
 CC=gcc
-OBJECTS=main.o loop.o interface.o net.o mtproto-common.o mtproto-client.o queries.o structures.o binlog.o tools.o lua-tg.o
+OBJECTS=main.o loop.o interface.o net.o mtproto-common.o mtproto-client.o queries.o structures.o binlog.o tools.o lua-tg.o python-tg.o
 
 .SUFFIXES:
 

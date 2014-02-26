@@ -1,6 +1,7 @@
 /* config.h.  Generated from config.h.in by configure.  */
 /* config.h.in.  Generated from configure.ac by autoheader.  */
 
+#define USE_PYTHON 1
 /* Define to 1 if you have the `alarm' function. */
 #define HAVE_ALARM 1
 

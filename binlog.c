@@ -24,6 +24,9 @@
 #ifdef USE_LUA
 # include "lua-tg.h"
 #endif
+#ifdef USE_PYTHON
+# include "python-tg.h"
+#endif
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -832,6 +835,9 @@ void replay_log_event (void) {
       #ifdef USE_LUA
         lua_new_msg (M);
       #endif
+      #ifdef USE_PYTHON
+        python_new_msg (M);
+      #endif
     }
     rptr = in_ptr;
     break;
@@ -870,6 +876,9 @@ void replay_log_event (void) {
       #ifdef USE_LUA
         lua_new_msg (M);
       #endif
+      #ifdef USE_PYTHON
+        python_new_msg (M);
+      #endif
     }
     rptr = in_ptr;
     break;
@@ -905,6 +914,9 @@ void replay_log_event (void) {
       message_insert (M);
       #ifdef USE_LUA
         lua_new_msg (M);
+      #endif
+      #ifdef USE_PYTHON
+        python_new_msg (M);
       #endif
     }
     rptr = in_ptr;
@@ -944,6 +956,9 @@ void replay_log_event (void) {
       #ifdef USE_LUA
         lua_new_msg (M);
       #endif
+      #ifdef USE_PYTHON
+        python_new_msg (M);
+      #endif
     }
     rptr = in_ptr;
     break;
@@ -982,6 +997,9 @@ void replay_log_event (void) {
       #ifdef USE_LUA
         lua_new_msg (M);
       #endif
+      #ifdef USE_PYTHON
+        python_new_msg (M);
+      #endif
     }
     rptr = in_ptr;
     break;
@@ -1012,6 +1030,9 @@ void replay_log_event (void) {
       message_insert (M);
       #ifdef USE_LUA
         lua_new_msg (M);
+      #endif
+      #ifdef USE_PYTHON
+        python_new_msg (M);
       #endif
     }
     rptr = in_ptr;
@@ -1045,6 +1066,9 @@ void replay_log_event (void) {
       #ifdef USE_LUA
         lua_new_msg (M);
       #endif
+      #ifdef USE_PYTHON
+        python_new_msg (M);
+      #endif
     }
     rptr = in_ptr;
     break;
@@ -1076,6 +1100,9 @@ void replay_log_event (void) {
       message_insert (M);
       #ifdef USE_LUA
         lua_new_msg (M);
+      #endif
+      #ifdef USE_PYTHON
+        python_new_msg (M);
       #endif
     }
     rptr = in_ptr;

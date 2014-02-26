@@ -53,6 +53,9 @@
 #include "interface.h"
 #include "tools.h"
 
+#ifdef USE_PYTHON
+#  include "python-tg.h"
+#endif
 #ifdef USE_LUA
 #  include "lua-tg.h"
 #endif
@@ -361,10 +364,11 @@ int disable_auto_accept;
 int wait_dialog_list;
 
 char *lua_file;
+char *python_file;
 
 void args_parse (int argc, char **argv) {
   int opt = 0;
-  while ((opt = getopt (argc, argv, "u:hk:vn:Nc:p:l:RfBL:Es:wW")) != -1) {
+  while ((opt = getopt (argc, argv, "u:hk:vn:Nc:p:l:RfBL:Es:S:wW")) != -1) {
     switch (opt) {
     case 'u':
       set_default_username (optarg);
@@ -413,6 +417,9 @@ void args_parse (int argc, char **argv) {
       break;
     case 's':
       lua_file = tstrdup (optarg);
+      break;
+    case 'S':
+      python_file = tstrdup(optarg);
       break;
     case 'W':
       wait_dialog_list = 1;
@@ -482,7 +489,17 @@ int main (int argc, char **argv) {
   }
   #endif
 
+  #ifdef USE_PYTHON
+  if (python_file) {
+    python_init(python_file);
+  }
+  #endif
   inner_main ();
   
+  #ifdef USE_PYTHON
+  if (python_file) {
+    python_finalize();
+  }
+  #endif
   return 0;
 }
