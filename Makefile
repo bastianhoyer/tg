@@ -1,10 +1,10 @@
 srcdir=.
 
-CFLAGS=-g 
+CFLAGS=-g -O2
 LDFLAGS=
 CPPFLAGS=
 DEFS=-DHAVE_CONFIG_H
-COMPILE_FLAGS=${CFLAGS} ${CPPFLAGS} ${DEFS} -Wall -Wextra -Werror -Wno-deprecated -fno-strict-aliasing -fno-omit-frame-pointer -g
+COMPILE_FLAGS=${CFLAGS} ${CPPFLAGS} ${DEFS} -Wall -Wextra -Werror -Wno-deprecated -fno-strict-aliasing -fno-omit-frame-pointer -ggdb
 
 EXTRA_LIBS=-lconfig -ledit -lcrypto -lz -lm   -ledit -llua -lpython
 LOCAL_LDFLAGS=-rdynamic -ggdb ${EXTRA_LIBS}
